@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PHPStan: Analyse statique complète",
+            "type": "shell",
+            "command": "php",
+            "args": [
+                "vendor/bin/phpstan",
+                "analyse"
+            ],
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^\\s*(.*):(\\d+):\\s*(.*)$",
+                    "file": 1,
+                    "location": 2,
+                    "message": 3
+                }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Doctrine: Valider le schéma",
+            "type": "shell",
+            "command": "php",
+            "args": [
+                "bin/console",
+                "doctrine:schema:validate"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Doctrine: Info entités",
+            "type": "shell",
+            "command": "php",
+            "args": [
+                "bin/console",
+                "doctrine:orm:info"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "PHP Lint: Vérifier tous les fichiers Entity",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "for f in src/Entity/*.php; do php -l \"$f\" || exit 1; done && echo '✅ Tous les fichiers Entity sont valides'"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Vérification complète (PHPStan + Doctrine)",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "echo '📊 PHPStan...' && php vendor/bin/phpstan analyse --no-progress && echo '' && echo '🗄️ Doctrine...' && php bin/console doctrine:schema:validate && echo '' && echo '✅ TOUS LES TESTS PASSENT'"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        }
+    ]
+}

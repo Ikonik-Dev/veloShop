@@ -1,0 +1,24 @@
+easy_admin:
+  site_name: 'Ramesh Bike Admin'
+  site_title_suffix: ' - Admin Dashboard'
+  
+  dashboards:
+    main:
+      controller: App\Controller\Admin\DashboardController
+      
+  entities:
+    - App\Entity\Bike
+    - App\Entity\Brand
+    - App\Entity\Category
+    - App\Entity\BikeVariant
+    - App\Entity\BikePrice
+    - App\Entity\BikeFeature
+    - App\Entity\BikeSpecification
+    - App\Entity\BikeImage
+    - App\Entity\Motor
+    - App\Entity\Package
+    - App\Entity\Stock
+    - App\Entity\Review
+    - App\Entity\CustomerSegment
+    - App\Entity\BikeCompatibility
+    - App\Entity\FeatureCategory

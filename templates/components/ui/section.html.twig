@@ -1,0 +1,18 @@
+{#
+  Section wrapper
+  @param string title       — titre de section (optionnel)
+  @param string id          — ancre HTML (optionnel)
+  @param string bg          — classe de fond (défaut: 'bg-gray-50')
+  @param string extra_class — classes additionnelles
+#}
+{% set bg = bg|default('bg-gray-50') %}
+{% set extra_class = extra_class|default('') %}
+
+<section class="{{ bg }} {{ extra_class }}">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		{% if title is defined and title %}
+			<h2 {% if id is defined and id %} id="{{ id }}" {% endif %} class="text-2xl font-bold mb-6">{{ title }}</h2>
+		{% endif %}
+		{{ block('section_content') }}
+	</div>
+</section>

@@ -1,0 +1,44 @@
+{
+    "php": {
+        "path": "C:\\laragon\\bin\\php\\php-8.4.3-nts-Win32-x64"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.intelephense": true
+        }
+    },
+    "intelephense.strict": true,
+    "intelephense.diagnosticsFormat": "compact",
+    "intelephense.files.maxSize": 5000000,
+    "intelephense.compatibility.correctForBaseClassStaticVariableAccess": true,
+    "intelephense.completion.insertUseDeclaration": true,
+    "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": false,
+    "intelephense.stubs": [
+        "standard",
+        "symfony",
+        "doctrine",
+        "date",
+        "spl"
+    ],
+    "intelephense.format.enable": true,
+    "intelephense.environment.phpVersion": "8.4",
+    "search.exclude": {
+        "**/vendor": true,
+        "**/.git": true,
+        "**/node_modules": true,
+        "var/cache": true,
+        "var/log": true
+    },
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.git": true
+    },
+    "php-cs-fixer.executablePath": "${workspaceRoot}/vendor/bin/php-cs-fixer",
+    "php-cs-fixer.onsave": true,
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
+        "editor.formatOnSave": true
+    }
+}

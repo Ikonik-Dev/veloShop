@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ramesh Bikes — Vélos premium
+{% endblock %}
+
+{% block body %}
+	{# === Hero === #}
+	<section class="relative overflow-hidden">
+		{% include 'components/hero.html.twig' with {
+			badge: 'Premium • Design • Performance',
+			title: "Ramesh Bikes — L'excellence du cyclisme",
+			subtitle: 'Vélos premium pour amateurs, professionnels et institutions. Alliez performance, confort et esthétisme.',
+			cta_label: 'Découvrir la collection',
+			cta_href: '#products',
+			cta2_label: 'Demander un devis',
+			cta2_href: '#contact',
+			image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop',
+			image_caption: 'Édition limitée — Série 2026',
+			features: [
+				{ title: 'Conception', subtitle: 'Matériaux haut de gamme' },
+				{ title: 'Performance', subtitle: 'Tests pro & endurance' },
+				{ title: 'Service', subtitle: 'Support dédié B2B & B2C' }
+			]
+		} %}
+	</section>
+
+	{# === Produits === #}
+	{% include 'components/product_grid.html.twig' with {
+		title: 'Nos meilleures ventes',
+		id: 'products',
+		products: [
+			{ name: 'Ramesh Pro', description: 'Route carbone, ultra léger.' },
+			{ name: 'Ramesh Urban E', description: 'Électrique, confort et autonomie.' },
+			{ name: 'Ramesh Gravel', description: 'Polyvalence & endurance.' }
+		]
+	} %}
+
+	{# === Animation hero (Motion One) === #}
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+const el = document.getElementById('heroBox');
+if (el && window.motion) {
+motion.animate(el, {
+opacity: [
+0, 1
+],
+transform: ['translateY(24px)', 'translateY(0px)']
+}, {duration: 0.8});
+}
+});
+	</script>
+{% endblock %}

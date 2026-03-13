@@ -1,0 +1,46 @@
+<footer class="bg-white border-t mt-12">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div>
+				<div class="flex items-center gap-3 mb-3">
+					<div class="w-10 h-10 bg-gradient-to-br from-primary to-accent text-white rounded-full flex items-center justify-center font-semibold">RB</div>
+					<span class="font-semibold">Ramesh Bikes</span>
+				</div>
+				<p class="text-sm text-gray-600">Bicyclette premium pour amateurs, pros et institutions. Performance, design, et service dédié.</p>
+			</div>
+
+			<div>
+				<h4 class="font-semibold mb-2">Navigation</h4>
+				<ul class="text-sm text-gray-600 space-y-1">
+					<li>
+						<a href="{{ path('app_products') }}" class="hover:text-primary">Produits</a>
+					</li>
+					<li>
+						<a href="{{ path('app_solutions') }}" class="hover:text-primary">Solutions</a>
+					</li>
+					<li>
+						<a href="{{ path('app_enterprise') }}" class="hover:text-primary">Entreprise</a>
+					</li>
+					<li>
+						<a href="{{ path('app_shop') }}" class="hover:text-primary">Boutique</a>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h4 class="font-semibold mb-2">Contact</h4>
+				<p class="text-sm text-gray-600">contact@ramesh-bikes.example</p>
+				<div class="mt-3">
+					<form class="flex gap-2" @submit.prevent>
+						<input type="email" placeholder="Email" class="px-3 py-2 border rounded-md text-sm w-full"/>
+						<button class="px-3 py-2 bg-primary text-white rounded-md text-sm">OK</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-8 text-center text-xs text-gray-400">©
+			{{ "now"|date("Y") }}
+			Ramesh Bikes — Tous droits réservés</div>
+	</div>
+</footer>

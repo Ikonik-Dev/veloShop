@@ -1,0 +1,27 @@
+{# 
+  Button component
+  @param string label       — texte du bouton
+  @param string href        — lien (défaut: '#')
+  @param string variant     — 'primary' | 'outline' (défaut: 'primary')
+  @param string size        — 'sm' | 'md' | 'lg' (défaut: 'md')
+  @param string extra_class — classes additionnelles
+#}
+{% set href = href|default('#') %}
+{% set variant = variant|default('primary') %}
+{% set size = size|default('md') %}
+{% set extra_class = extra_class|default('') %}
+
+{% set size_classes = {
+  sm: 'px-3 py-1.5 text-sm',
+  md: 'px-6 py-3',
+  lg: 'px-8 py-4 text-lg'
+} %}
+
+{% set variant_classes = {
+  primary: 'bg-primary text-white shadow hover:opacity-95',
+  outline: 'border border-gray-200 text-gray-700 hover:bg-gray-50'
+} %}
+
+<a href="{{ href }}" class="inline-block rounded-md font-medium transition {{ size_classes[size] }} {{ variant_classes[variant] }} {{ extra_class }}">
+	{{ label }}
+</a>

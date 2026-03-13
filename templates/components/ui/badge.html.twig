@@ -1,0 +1,18 @@
+{# 
+  Badge / pill component
+  @param string text        — contenu texte
+  @param string color       — 'primary' | 'accent' | 'gray' (défaut: 'primary')
+  @param string extra_class — classes additionnelles
+#}
+{% set color = color|default('primary') %}
+{% set extra_class = extra_class|default('') %}
+
+{% set color_classes = {
+  primary: 'text-primary',
+  accent: 'text-accent',
+  gray: 'text-gray-500'
+} %}
+
+<span class="text-sm font-medium {{ color_classes[color] }} {{ extra_class }}">
+	{{ text }}
+</span>

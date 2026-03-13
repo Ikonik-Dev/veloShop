@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique — Ramesh Bikes
+{% endblock %}
+
+{% block body %}
+	{# === Hero boutique === #}
+	<section class="bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+			<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+				<div class="max-w-2xl">
+					{% include 'components/ui/badge.html.twig' with { text: 'Boutique en ligne' } %}
+					<h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Choisissez votre monture</h1>
+					<p class="mt-4 text-lg text-gray-600">Commandez en ligne, livraison assurée et montage professionnel inclus.</p>
+				</div>
+				<div x-data="{ filter: 'all' }" class="flex gap-2 flex-wrap">
+					<button @click="filter = 'all'" :class="filter === 'all' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'" class="px-4 py-2 rounded-md text-sm font-medium transition">Tous</button>
+					<button @click="filter = 'road'" :class="filter === 'road' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'" class="px-4 py-2 rounded-md text-sm font-medium transition">Road</button>
+					<button @click="filter = 'gravel'" :class="filter === 'gravel' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'" class="px-4 py-2 rounded-md text-sm font-medium transition">Gravel</button>
+					<button @click="filter = 'electric'" :class="filter === 'electric' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'" class="px-4 py-2 rounded-md text-sm font-medium transition">Électrique</button>
+					<button @click="filter = 'urban'" :class="filter === 'urban' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'" class="px-4 py-2 rounded-md text-sm font-medium transition">Urbain</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{# === Grille produits boutique === #}
+	<section class="bg-gray-50 border-t" x-data="{ filter: 'all' }">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{% for item in [
+					{ name: 'Ramesh Pro', cat: 'road', price: '4 990 €', desc: 'Carbone, Shimano Ultegra, 7.2 kg' },
+					{ name: 'Ramesh Pro Elite', cat: 'road', price: '7 490 €', desc: 'Carbone haut module, SRAM Red, 6.4 kg' },
+					{ name: 'Ramesh Gravel', cat: 'gravel', price: '3 990 €', desc: 'Alu/carbone, GRX 810, pneus 40mm' },
+					{ name: 'Ramesh Gravel X', cat: 'gravel', price: '5 490 €', desc: 'Full carbone, SRAM Rival XPLR, 8.1 kg' },
+					{ name: 'Ramesh Urban E', cat: 'electric', price: '3 490 €', desc: 'Bosch Performance, 625 Wh, 100 km' },
+					{ name: 'Ramesh E-Road', cat: 'electric', price: '5 990 €', desc: 'Fazua Ride 60, carbone, 12.5 kg' },
+					{ name: 'Ramesh City+', cat: 'urban', price: '1 990 €', desc: 'Alu, Shimano Nexus 8, porte-bagages' },
+					{ name: 'Ramesh Commuter', cat: 'urban', price: '2 490 €', desc: 'Cardan, dynamo, éclairage intégré' }
+				] %}
+					<div x-show="filter === 'all' || filter === '{{ item.cat }}'" x-transition class="bg-white rounded-lg shadow p-4">
+						<div class="h-40 bg-gray-100 rounded-md mb-4 flex items-center justify-center text-gray-300 text-4xl">🚲</div>
+						<div class="flex justify-between items-start">
+							<h3 class="font-semibold">{{ item.name }}</h3>
+							<span class="text-sm font-bold text-primary">{{ item.price }}</span>
+						</div>
+						<p class="text-sm text-gray-500 mt-1">{{ item.desc }}</p>
+						<div class="mt-4">
+							{% include 'components/ui/button.html.twig' with { label: 'Voir le détail', href: '#', variant: 'outline', size: 'sm' } %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

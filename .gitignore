@@ -18,3 +18,18 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# Node dependencies
+node_modules/
+
+# Vite build output (optional - typically built on deploy)
+/public/build/
+
+# npm logs
+npm-debug.log*
+
+# Keep package-lock.json committed (do not ignore)
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

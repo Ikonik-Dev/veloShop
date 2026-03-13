@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits — Ramesh Bikes
+{% endblock %}
+
+{% block body %}
+	{# === Hero produits === #}
+	<section class="bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+			<div class="max-w-2xl">
+				{% include 'components/ui/badge.html.twig' with { text: 'Notre catalogue' } %}
+				<h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Des vélos d'exception</h1>
+				<p class="mt-4 text-lg text-gray-600">Performance, confort et design — chaque modèle est conçu pour répondre aux exigences des cyclistes les plus passionnés.</p>
+			</div>
+		</div>
+	</section>
+
+	{# === Catégories === #}
+	<section class="bg-gray-50 border-t">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<h2 class="text-2xl font-bold mb-8">Catégories</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{% for cat in [
+					{ name: 'Road', description: 'Carbone ultra-léger, aérodynamisme maximal. Pour la route et la compétition.', icon: '🏁' },
+					{ name: 'Gravel', description: 'Polyvalence tout-terrain. Routes, chemins, aventure sans limites.', icon: '🌄' },
+					{ name: 'Électrique', description: 'Assistance intelligente, autonomie longue durée. Le premium électrique.', icon: '⚡' },
+					{ name: 'Urbain', description: 'Mobilité quotidienne élégante. Confort et praticité en ville.', icon: '🏙️' },
+					{ name: 'Triathlon', description: 'Géométrie spécifique, intégration aéro. Performances chronométrées.', icon: '🏊' },
+					{ name: 'Sur mesure', description: 'Fit personnalisé à vos mensurations. Peinture et finitions uniques.', icon: '✨' }
+				] %}
+					<div class="bg-white rounded-lg shadow p-6 hover:shadow-md transition">
+						<div class="text-3xl mb-3">{{ cat.icon }}</div>
+						<h3 class="font-semibold text-lg">{{ cat.name }}</h3>
+						<p class="text-sm text-gray-500 mt-1">{{ cat.description }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{# === Produits phares === #}
+	{% include 'components/product_grid.html.twig' with {
+		title: 'Produits phares',
+		id: 'featured',
+		products: [
+			{ name: 'Ramesh Pro', description: 'Route carbone, ultra léger. À partir de 4 990 €.' },
+			{ name: 'Ramesh Urban E', description: 'Électrique, confort et autonomie. À partir de 3 490 €.' },
+			{ name: 'Ramesh Gravel', description: 'Polyvalence & endurance. À partir de 3 990 €.' },
+			{ name: 'Ramesh Chrono TT', description: 'Triathlon, contre-la-montre. À partir de 6 490 €.' },
+			{ name: 'Ramesh City+', description: 'Urbain premium, cadre aluminium. À partir de 1 990 €.' },
+			{ name: 'Ramesh Custom', description: 'Configuration sur mesure. Devis personnalisé.' }
+		]
+	} %}
+{% endblock %}

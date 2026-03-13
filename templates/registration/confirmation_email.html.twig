@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body style="margin:0; padding:0; background-color:#f9fafb; font-family:Arial, sans-serif;">
+	<table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
+		<tr>
+			<td align="center">
+				<table width="480" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); overflow:hidden;">
+					<tr>
+						<td style="background:linear-gradient(135deg,#2563eb,#fb923c); padding:24px; text-align:center;">
+							<span style="color:#ffffff; font-size:28px; font-weight:800;">RB</span>
+							<br>
+							<span style="color:#ffffff; font-size:14px;">Ramesh Bikes</span>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding:32px;">
+							<h1 style="font-size:22px; color:#1f2937; margin:0 0 16px;">Confirmez votre email</h1>
+							<p style="font-size:15px; color:#4b5563; line-height:1.6; margin:0 0 24px;">
+								Bienvenue chez Ramesh Bikes ! Cliquez sur le bouton ci-dessous pour confirmer votre adresse email.
+							</p>
+							<table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td align="center">
+										<a href="{{ signedUrl|raw }}" style="display:inline-block; padding:12px 32px; background-color:#2563eb; color:#ffffff; text-decoration:none; border-radius:8px; font-weight:600; font-size:15px;">
+											Confirmer mon email
+										</a>
+									</td>
+								</tr>
+							</table>
+							<p style="font-size:13px; color:#9ca3af; margin:24px 0 0; line-height:1.5;">
+								Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding:16px 32px; border-top:1px solid #e5e7eb; text-align:center;">
+							<span style="font-size:12px; color:#9ca3af;">Ramesh Bikes — Vélos premium</span>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprise — Ramesh Bikes
+{% endblock %}
+
+{% block body %}
+	{# === Hero entreprise === #}
+	<section class="bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+			<div class="max-w-2xl">
+				{% include 'components/ui/badge.html.twig' with { text: 'Notre histoire' } %}
+				<h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Ramesh Bikes</h1>
+				<p class="mt-4 text-lg text-gray-600">Fondée par des passionnés du cyclisme, Ramesh Bikes conçoit des vélos premium alliant performance, design et durabilité.</p>
+			</div>
+		</div>
+	</section>
+
+	{# === Valeurs === #}
+	<section class="bg-gray-50 border-t">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<h2 class="text-2xl font-bold mb-8">Nos valeurs</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+				{% for val in [
+					{ title: 'Excellence', subtitle: 'Chaque détail compte. Matériaux haut de gamme, finitions irréprochables.', icon: '💎' },
+					{ title: 'Innovation', subtitle: 'R&D permanente, intégration des dernières technologies cyclistes.', icon: '🔬' },
+					{ title: 'Durabilité', subtitle: 'Conception responsable, réparabilité et longévité de chaque vélo.', icon: '🌱' }
+				] %}
+					<div class="bg-white rounded-lg shadow p-6 text-center">
+						<div class="text-4xl mb-4">{{ val.icon }}</div>
+						<h3 class="font-semibold text-lg">{{ val.title }}</h3>
+						<p class="text-sm text-gray-500 mt-2">{{ val.subtitle }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{# === Chiffres === #}
+	<section class="bg-white border-t">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<h2 class="text-2xl font-bold mb-8">En chiffres</h2>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+				{% for stat in [
+					{ value: '2018', label: 'Année de création' },
+					{ value: '12 000+', label: 'Vélos livrés' },
+					{ value: '8', label: 'Pays distribués' },
+					{ value: '98%', label: 'Clients satisfaits' }
+				] %}
+					<div>
+						<div class="text-3xl font-extrabold text-primary">{{ stat.value }}</div>
+						<div class="text-sm text-gray-500 mt-1">{{ stat.label }}</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{# === Équipe === #}
+	<section class="bg-gray-50 border-t">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<h2 class="text-2xl font-bold mb-8">L'équipe</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+				{% for member in [
+					{ name: 'Ramesh K.', role: 'Fondateur & CEO', photo: null },
+					{ name: 'Sophie M.', role: 'Directrice R&D', photo: null },
+					{ name: 'Lucas T.', role: 'Resp. commercial B2B', photo: null }
+				] %}
+					<div class="bg-white rounded-lg shadow p-6 text-center">
+						<div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4"></div>
+						<h3 class="font-semibold">{{ member.name }}</h3>
+						<p class="text-sm text-gray-500">{{ member.role }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

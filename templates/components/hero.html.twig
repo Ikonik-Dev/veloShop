@@ -1,0 +1,65 @@
+{#
+  Hero component — landing page hero block
+  @param string badge       — petit texte au-dessus du titre
+  @param string title       — titre principal
+  @param string subtitle    — sous-titre / description
+  @param string cta_label   — texte du bouton principal
+  @param string cta_href    — lien du bouton principal
+  @param string cta2_label  — texte du bouton secondaire (optionnel)
+  @param string cta2_href   — lien du bouton secondaire (optionnel)
+  @param string image       — URL de l'image hero
+  @param string image_caption — légende sous l'image
+  @param array  features    — liste de {title, subtitle} pour les pills
+#}
+{% set features = features|default([]) %}
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div
+		class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-16">
+
+		{# --- Texte --- #}
+		<div>
+			{% if badge is defined and badge %}
+				{% include 'components/ui/badge.html.twig' with { text: badge } %}
+			{% endif %}
+
+			<h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">{{ title }}</h1>
+
+			{% if subtitle is defined and subtitle %}
+				<p class="mt-4 text-lg text-gray-600">{{ subtitle }}</p>
+			{% endif %}
+
+			<div class="mt-8 flex flex-wrap gap-4">
+				{% if cta_label is defined %}
+					{% include 'components/ui/button.html.twig' with { label: cta_label, href: cta_href|default('#'), variant: 'primary' } %}
+				{% endif %}
+				{% if cta2_label is defined %}
+					{% include 'components/ui/button.html.twig' with { label: cta2_label, href: cta2_href|default('#'), variant: 'outline' } %}
+				{% endif %}
+			</div>
+
+			{% if features|length > 0 %}
+				<div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+					{% for feat in features %}
+						{% include 'components/ui/feature_pill.html.twig' with { title: feat.title, subtitle: feat.subtitle } %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+
+		{# --- Image --- #}
+		<div class="relative">
+			<div id="heroBox" class="w-full rounded-2xl bg-gradient-to-br from-gray-100 to-white p-6 shadow-lg">
+				{% if image is defined and image %}
+					<img src="{{ image }}" alt="{{ title|default('Hero') }}" class="w-full h-72 object-cover rounded-xl">
+				{% else %}
+					<div class="w-full h-72 bg-gray-100 rounded-xl"></div>
+				{% endif %}
+				{% if image_caption is defined and image_caption %}
+					<div class="mt-4 text-sm text-gray-500">{{ image_caption }}</div>
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+</div>

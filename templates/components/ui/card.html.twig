@@ -1,0 +1,22 @@
+{#
+  Card component
+  @param string title       — titre de la carte
+  @param string description — sous-texte
+  @param string image       — URL image (optionnel, affiche placeholder si absent)
+  @param string extra_class — classes additionnelles
+#}
+{% set extra_class = extra_class|default('') %}
+
+<div class="bg-white rounded-lg shadow p-4 {{ extra_class }}">
+	{% if image is defined and image %}
+		<img src="{{ image }}" alt="{{ title|default('') }}" class="w-full h-40 object-cover rounded-md mb-4">
+	{% else %}
+		<div class="h-40 bg-gray-100 rounded-md mb-4"></div>
+	{% endif %}
+	{% if title is defined and title %}
+		<h3 class="font-semibold">{{ title }}</h3>
+	{% endif %}
+	{% if description is defined and description %}
+		<p class="text-sm text-gray-500">{{ description }}</p>
+	{% endif %}
+</div>
